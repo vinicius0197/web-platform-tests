@@ -31,7 +31,7 @@ def is_port_8000_in_use():
 def manifest_dir():
     def update_manifest():
         with pytest.raises(SystemExit) as excinfo:
-            wpt.main(argv=["manifest", "--no-download", "--path", os.path.join(path, "MANIFEST.json")])
+            wpt.main(argv=["manifest", "--path", os.path.join(path, "MANIFEST.json")])
         assert excinfo.value.code == 0
 
     if os.environ.get('TRAVIS') == "true":
