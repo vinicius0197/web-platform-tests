@@ -4,6 +4,7 @@ language: python
 branches:
   only:
     - master
+    - env4
 addons:
   hosts:
     - web-platform.test
@@ -18,6 +19,7 @@ before_install:
   - . ./tools/ci/before_install.sh
 install:
   - ./tools/ci/install.sh
+  - travis_wait mvn install
 env:  # required at the top-level for allow_failures to work below
   global:
     - SAUCE_USERNAME=w3c-ttwf
@@ -87,7 +89,9 @@ matrix:
         apt:
           packages:
             - libnss3-tools
-      env: JOB=wpt_integration TOXENV=py27,py27-flake8 SCRIPT=tools/ci/ci_wpt.sh
+      env: 
+        - JOB=wpt_integration TOXENV=py27,py27-flake8 SCRIPT=tools/ci/ci_wpt.sh
+        - RUN_JOB=1
   exclude:
     - env:  # exclude empty env from the top-level above
   allow_failures:
