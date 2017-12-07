@@ -1,0 +1,3 @@
+{
+  "wpt/tests/test_wpt.py::test_run_chrome": true
+}
