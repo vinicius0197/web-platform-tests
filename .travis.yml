@@ -4,6 +4,7 @@ language: python
 branches:
   only:
     - master
+    - final1
 addons:
   hosts:
     - web-platform.test
