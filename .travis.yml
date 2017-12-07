@@ -4,6 +4,7 @@ language: python
 branches:
   only:
     - master
+    - env
 addons:
   hosts:
     - web-platform.test
@@ -87,7 +88,10 @@ matrix:
         apt:
           packages:
             - libnss3-tools
-      env: JOB=wpt_integration TOXENV=py27,py27-flake8 SCRIPT=tools/ci/ci_wpt.sh
+      env: 
+        - JOB=wpt_integration TOXENV=py27,py27-flake8 SCRIPT=tools/ci/ci_wpt.sh
+        - RUN_JOB=1
+        - PYTEST_ADDOPTS="--verbose"
   exclude:
     - env:  # exclude empty env from the top-level above
   allow_failures:
